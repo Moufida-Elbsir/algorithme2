@@ -1,0 +1,41 @@
+ALGORITHM checkpoint
+VAR
+ set1 : ARRAY_OF integer[10];
+ set2 : ARRAY_OF integer[10];
+ sum1: integer;
+ sum2: integer;
+
+BEGIN
+ sum1:=0;
+ sum2:=0;
+    FOR i FROM 0 TO set1.length-1 STEP 1  DO
+        FOR j FROM 0 TO set2.length-1 STEP 1  DO
+        IF (set1[i]<>set2[j]) THEN
+            sum1:=sum1+set1[i];     
+        END_IF
+        END_FOR
+    END_FOR
+    FOR i FROM 0 TO set2.length-1 STEP 1 DO
+      FOR j FROM set1.length-1 TO max STEP step  DO
+        IF (set2[i]<>set1[j]) THEN
+            sum1:=sum1+set2[i];
+        END_IF  
+      END_FOR
+    END_FOR
+    Write("the sum of distinct elements is"sum1);
+    FOR i FROM 0 TO set1.length-1 STEP 1  DO
+        FOR j FROM 0 TO set2.length-1 STEP 1  DO
+           IF (set1[i]==set2[j]) THEN
+            sum2:=sum2+set1[i];     
+        END_IF
+        END_FOR
+    END_FOR
+    FOR i FROM 0 TO set2.length-1 STEP 1 DO
+      FOR j FROM set1.length-1 TO max STEP step  DO
+        IF (set2[i]==set1[j]) THEN
+            sum2:=sum2+set2[i];
+        END_IF  
+        END_FOR
+    END_FOR
+    Write("the sum of overlapping elements is"sum2); 
+END
